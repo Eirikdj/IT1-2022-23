@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hovedside</title>
+    <link rel="stylesheet" href="Hovedstilark_prosjekt.css" />
+    <style>
+      /*Denne id-en blir brukt til å endre utsenden på overskriften av siden. 
+      Her legger jeg til en text shadow slik at bokstavene i tittelen får en skygge baks seg.*/
+      #tittel {
+        color: white;
+        margin-top: -100px;
+        font-size: 55px;
+        text-shadow: 1px 1px 1px black, 2px 2px 2px black;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <!--Droppmeny er en klasse som blir brukt til å definere en knapp. Når man hovrer over knappen
+    vil de poppe opp to linker som fører deg til andre sider på nettsiden-->
+    <div class="Droppmeny">
+      <button style="height: 60px; width: 150px">Innhold</button>
+      <div>
+        <a href="index.html">Hovedside</a>
+        <a href="Innsjøer_Innhold.html">Innsjøer</a>
+      </div>
+    </div>
+    <!--Her bruker jeg id-en tittel for å endre utseende og posisjonen-->
+    <h1 id="tittel" style="text-decoration: underline">
+      De 10 høyeste fjellene i Norge
+    </h1>
+    <!--Her har jeg lagd en tabell som handler om hvor store de forskjellige fjellene er og hvor høyt oppe på rangeringen de er. 
+    Jeg bruker table for å sette opp en tabell og definerer overskriftene i tabellen ved thead og i tbody putter jeg inn informasjon til 
+    der fjellet er på rangeringen. Jeg har også gjort at navnene på tabellen funker som linker slik at man kommer til snl hvor man kan lese mer om fjellet-->
+    <table class="tabell-innhold">
+      <thead>
+        <tr>
+          <th>Nummer</th>
+          <th style="text-align: center;">Navn</th>
+          <th>Høyde moh.</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>
+            <a href="https://snl.no/Galdhøpiggen" target="_blank"
+              >Galdhøpiggen</a
+            >
+          </td>
+          <td>2469</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>
+            <a href="https://snl.no/Glittertinden" target="_blank"
+              >Glittertind</a
+            >
+          </td>
+          <td>2452</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>
+            <a href="https://snl.no/Store_Skagastølstind" target="_blank"
+              >Store Skagastølstind</a
+            >
+          </td>
+          <td>2406</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>
+            <a href="https://snl.no/Store_Styggedalstind" target="_blank"
+              >Store Styggedalstind</a
+            >
+          </td>
+          <td>2387</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>
+            <a href="https://snl.no/Skardstinden" target="_blank"
+              >Skardstinden</a
+            >
+          </td>
+          <td>2374</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>
+            <a
+              href="http://fjellforer.blogspot.com/2013/07/veslpiggen-2369-moh.html"
+              target="_blank"
+              >Veslepiggen</a
+            >
+          </td>
+          <td>2369</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>
+            <a href="https://snl.no/Surtningssue" target="_blank"
+              >Surtningssue</a
+            >
+          </td>
+          <td>2368</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>
+            <a href="https://snl.no/Memurutindan" target="_blank"
+              >Store Memurutindan</a
+            >
+          </td>
+          <td>2364</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>
+            <a href="https://snl.no/Keilhaus_topp" target="_blank"
+              >Keilhaus topp</a
+            >
+          </td>
+          <td>2355</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>
+            <a href="https://snl.no/Gjertvasstind" target="_blank"
+              >Gjertvasstind</a
+            >
+          </td>
+          <td>2351</td>
+        </tr>
+      </tbody>
+    </table>
+    <!--Her har jeg lagd en div for listen min som henviser til fakta om fjellet som er på første plass. 
+    Her bruker jeg orderd list for å få opp fakta 1, 2, 3 osv. og unorderd list for å få en dot hvor det står litt ekstra informasjon-->
+    <div class="liste">
+      <h2>Fakta om Galdhøpiggen</h2>
+      <ol>
+        <li>Høyeste fjellet i Norge</li>
+        <ul>
+          <li>2469 moh.</li>
+        </ul>
+        <li>Galdhøpiggen ligger i Jotunheimen</li>
+        <ul>
+          <li>Jotunheimen er i lom kommune</li>
+        </ul>
+        <li>De første som nådde toppen var i 1850</li>
+        <ul>
+          <li>
+            Personene var en gårdbruker Steinar Sulheim, Kirkesanger Ingebrit N.
+            Flotten og lærer Lars Arnesen.
+          </li>
+        </ul>
+        <li>Turen opp til Galdhøpiggen er ikke spesielt utfordrende</li>
+        <ul>
+          <li>
+            Turen anbefales ikke for barn under 7 år og personer som har
+            hjerteproblemer.
+          </li>
+        </ul>
+      </ol>
+    </div>
+    <!--Her bruker jeg en klasse for å definere hvor bildet skal være og hvor bredt og høyt det er-->
+    <div class="BildeKort">
+      <img
+        src="https://eu-assets.simpleview-europe.com/jotunheimen/imageresizer/?image=%2Fdmsimgs%2F20160818-_OVE2776-Fb1920p_1448265152.jpg&action=ProductDetailEssentials"
+        width="450px"
+        alt="Bilde av Galdhøpiggen"
+      />
+    </div>
+    <!--Her bruker jeg iframe for å få en annen html side inn på min side. Src-en er google maps og iframe gjør at 
+    denne kilden er interactive som vil si at man kan bla rundt omkring på den mens man er inne på min side-->
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d152397.5550180236!2d8.545482320769956!3d61.7609698976687!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46151d0000000001%3A0xc9dbf6be05f22ebb!2sJotunheimen%20nasjonalpark%3B%20vandring!5e0!3m2!1sno!2sno!4v1664449775427!5m2!1sno!2sno"
+      width="400"
+      height="300"
+      style="border: 0"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+    <!--En link som gjør at man kommer på toppen av siden man er på. Brukt id for å definere utsende og plassering-->
+    <a id="LinkTop" href="#top">Til toppen</a>
+  </body>
+</html>
