@@ -2,7 +2,7 @@ body {
     background-color: black;
     width: 100%;
     min-height: 100vh;
-    background-image: url(bakgrunn_nettside.gif);
+    background-image: url(bilder/bakgrunn_nettside.gif);
     background-repeat: no-repeat;
     background-size: 70%;
     background-position: center;
@@ -16,7 +16,7 @@ h1 {
     font-family: 'Courier New', Courier, monospace;
     color: transparent;
     -webkit-text-stroke: 1px #fff;
-    background: url(back.png);
+    background: url(bilder/back.png);
     -webkit-background-clip: text;
     background-position: 0 0;
     animation: tittel 20s linear infinite;
