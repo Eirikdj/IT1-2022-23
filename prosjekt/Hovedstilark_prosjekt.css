@@ -3,7 +3,7 @@ skjermen og legger inn skrift typen Times New Roman*/
 body {
     width: 100%;
     height: 100vh;
-    background-image: linear-gradient(rgb(0, 0, 0, 0), rgba(0, 0, 0, 1)), url(./IT1-2022-23/bilder/fjell.jpg);
+    background-image: linear-gradient(rgb(0, 0, 0, 0), rgba(0, 0, 0, 1)), url(./bilder/fjell.jpg);
     background-position: center;
     background-size: cover;
     margin: 0px;
