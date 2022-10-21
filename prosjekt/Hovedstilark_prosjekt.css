@@ -68,12 +68,12 @@ p {
 .posisjonering {
     display: flex;
     justify-content: center;
+    border-radius:10px;
 }
 
 .bilder img {
     transition: 0.4s;
     padding: 0px 50px;
-    border-radius:10px;
 }
 
 /*Koden gjør at når jeg hvovrer over et bilde innenfor den spesifike klassen flytter bildet seg opp 10px*/
