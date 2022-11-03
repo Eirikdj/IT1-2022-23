@@ -17,23 +17,23 @@
 <body id="body">
     <h1 style="font-size: 100px;">Kalkulator</h1>
     <script>
-        var tall1 = Number(prompt("Hva er tall 1"));
-        var tall2 = Number(prompt("Hva er tall 2"));
+        var forstetall = Number(prompt("Hva er tall 1"));
+        var andretall = Number(prompt("Hva er tall 2"));
         var operator = prompt("Skal du +, /, - eller *");
         if (operator == "+") {
-            var sum = tall1 + tall2;
+            var sum = forstetall + andretall;
             document.write(sum);
         }
         if (operator == "/") {
-            var sum = tall1 / tall2;
+            var sum = forstetall / andretall;
             document.write(sum);
         }
         if (operator == "-") {
-            var sum = tall1 - tall2;
+            var sum = forstetall - andretall;
             document.write(sum);
         }
         if (operator == "*") {
-            var sum = tall1 * tall2;
+            var sum = forstetall * andretall;
             document.write(sum);
         }
     </script>
