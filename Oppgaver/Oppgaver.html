@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forskjellige oppgaver</title>
+    <link rel="stylesheet" href="HovedstilarkOppgaver.css">
+</head>
+
+<body>
+    <h1>Oppgaver fra 1-8</h1>
+    <div class="oppsett">
+        <div>
+            <button id="check" onclick="tilfeldigHilsen()">Tilfeldig Hilsen</button>
+            <br>
+            <button onclick="kvadrat(document.getElementById('kvadrat').value)">Sjekk kvadrat</button>
+            <input type="Number" id="kvadrat" placeholder="Skriv inn tall">
+            <br>
+            <button
+                onclick="sum(parseInt(document.getElementById('forsteTall').value), parseInt(document.getElementById('andreTall').value))">Sjekk
+                sum av to tall</button>
+            <input type="Number" placeholder="Skriv et tall her" id="forsteTall">
+            <input type="Number" placeholder="Skriv et tall til" id="andreTall">
+            <br>
+            <button
+                onclick="tallTilRektangel(document.getElementById('lengde').value,document.getElementById('bredde').value)">Sjekk
+                Areal</button>
+            <input type="Number" placeholder="Skriv inn lengden" id="lengde">
+            <input type="Number" placeholder="Skriv inn bredden" id="bredde">
+            <br>
+            <button
+                onclick="sjs(document.getElementById('navn').value, document.getElementById('alder').value)">Trykk</button>
+            <input type="text" placeholder="Skriv inn navnet ditt" id="navn">
+            <input type="Number" placeholder="Skriv inn alderen din" id="alder">
+            <br>
+            <button onclick="tallTilTrapes(document.getElementById('a').value, document.getElementById('b').value, document.getElementById('h').value)">Sjekk areal av Trapes</button>
+            <input type="Number" placeholder="Definer a" id="a">
+            <input type="Number" placeholder="Definer b" id="b">
+            <input type="Number" placeholder="Definer h" id="h">
+            <br>
+            <p id="txtSvar"></p>
+        </div>
+    </div>
+    <script>
+        function tilfeldigHilsen() {
+            let randomizer = Math.floor(Math.random() * 3);
+            if (randomizer == 0) {
+                document.getElementById("txtSvar").innerHTML = "Hei";
+            }
+            else if (randomizer == 1) {
+                document.getElementById("txtSvar").innerHTML = "Hallo";
+            }
+            else {
+                document.getElementById("txtSvar").innerHTML = "God dag";
+            }
+        }
+        function kvadrat(a) {
+            txtSvar.innerHTML = ("Kvadrattallet til " + a + " er lik : " + a ** 2);
+        }
+        function sum(a, b) {
+            document.getElementById("txtSvar").innerHTML = "Summen av " + a + " og " + b + " er : " + parseInt(a + b);
+        }
+
+        function arealRektangel(lengde, bredde) {
+            return lengde * bredde;
+        }
+
+        function tallTilRektangel(x, y) {
+            document.getElementById("txtSvar").innerHTML = arealRektangel(x, y);
+            if (arealRektangel(x, y) <= 0) {
+                document.getElementById("txtSvar").innerHTML = "Dette funker ikke siden arealet er negativt eller lik 0";
+            }
+        }
+
+        function sjs(navn, alder) {
+            if (alder < 30) {
+                document.getElementById("txtSvar").innerHTML = "Hei " + navn + ", du er ung!";
+            }
+            else {
+                document.getElementById("txtSvar").innerHTML = "Du er gammel!";
+            }
+        }
+
+        function arealTrapes(a, b, h){
+            a = parseFloat(a); 
+            b = parseFloat(b);
+            h = parseFloat(h);
+            return ((a+b)/2)*h;
+        }
+
+        function tallTilTrapes(a, b, h) {
+            document.getElementById("txtSvar").innerHTML = arealTrapes(a, b, h); 
+        }
+    </script>
+</body>
+
+</html>
