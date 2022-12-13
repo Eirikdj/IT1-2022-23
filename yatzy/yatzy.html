@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yatzy</title>
+    <style>
+        #knappOppsett {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        #knappOppsett button {
+            width: 50px;
+            height: 50px;
+        }
+
+        #tabell {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        td {
+            border: 2px solid black;
+            width: 200px;
+        }
+
+        th {
+            max-width: 100px;
+            min-width: 100px;
+        }
+
+        #top-rad {
+            border: 2px solid black;
+            background-color: grey;
+        }
+
+        .farge-rad {
+            background-color: grey;
+        }
+
+        #deltagerInput {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        #resultatene {
+            display: flex;
+            justify-content: center;
+            width: 100px;
+            height: 100px;
+            gap: 5px;
+        }
+
+        #dices {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        #dices img {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="deltagerInput">
+        <button id="spillerKnapp" onclick="Spillere()">Legg til spiller</button>
+    </div>
+    <p id="nullKast" style="text-align: center; color: transparent; ">Du har ikke flere kast</p>
+    <div id="dices">
+        <img src="./dice1.png" id="terning1" class="terningene" onclick="checkColor(1)">
+        <img src="./dice2.png" id="terning2" class="terningene" onclick="checkColor(2)">
+        <img src="./dice3.png" id="terning3" class="terningene" onclick="checkColor(3)">
+        <img src="./dice4.png" id="terning4" class="terningene" onclick="checkColor(4)">
+        <img src="./dice5.png" id="terning5" class="terningene" onclick="checkColor(5)">
+    </div>
+    <div id="knappOppsett">
+        <button id="kastKnapp" onclick="kast()">Kast</button>
+        <button id="resetKnapp" onclick="resetKast()" style="display: none;">Neste spiller</button>
+    </div>
+    <div id="tabell">
+        <table>
+            <thead>
+                <th id="top-rad">Deltagere</th>
+                <th class="deltagere"></th>
+                <th class="deltagere"></th>
+                <th class="deltagere"></th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Enere</td>
+                    <td class="rad1" onclick="lagerSvarTop(1, 1)"></td>
+                    <td class="rad1" onclick="lagerSvarTop(1, 2)"></td>
+                    <td class="rad1" onclick="lagerSvarTop(1, 3)"></td>
+                </tr>
+                <tr>
+                    <td>Toere</td>
+                    <td class="rad2" onclick="lagerSvarTop(2, 1)"></td>
+                    <td class="rad2" onclick="lagerSvarTop(2, 2)"></td>
+                    <td class="rad2" onclick="lagerSvarTop(2, 3)"></td>
+                </tr>
+                <tr>
+                    <td>Treere</td>
+                    <td class="rad3" onclick="lagerSvarTop(3, 1)"></td>
+                    <td class="rad3" onclick="lagerSvarTop(3, 2)"></td>
+                    <td class="rad3" onclick="lagerSvarTop(3, 3)"></td>
+                </tr>
+                <tr>
+                    <td>Firere</td>
+                    <td class="rad4" onclick="lagerSvarTop(4, 1)"></td>
+                    <td class="rad4" onclick="lagerSvarTop(4, 2)"></td>
+                    <td class="rad4" onclick="lagerSvarTop(4, 3)"></td>
+                </tr>
+                <tr>
+                    <td>Femere</td>
+                    <td class="rad5" onclick="lagerSvarTop(5, 1)"></td>
+                    <td class="rad5" onclick="lagerSvarTop(5, 2)"></td>
+                    <td class="rad5" onclick="lagerSvarTop(5, 3)"></td>
+                </tr>
+                <tr>
+                    <td>Seksere</td>
+                    <td class="rad6" onclick="lagerSvarTop(6, 1)"></td>
+                    <td class="rad6" onclick="lagerSvarTop(6, 2)"></td>
+                    <td class="rad6" onclick="lagerSvarTop(6, 3)"></td>
+                </tr>
+                <tr>
+                    <td class="farge-rad">Sum</td>
+                    <td class="rad7"></td>
+                    <td class="rad7"></td>
+                    <td class="rad7"></td>
+                </tr>
+                <tr>
+                    <td class="farge-rad">Bonus</td>
+                    <td class="rad8"></td>
+                    <td class="rad8"></td>
+                    <td class="rad8"></td>
+                </tr>
+                <tr>
+                    <td>1 par</td>
+                    <td class="rad9"></td>
+                    <td class="rad9"></td>
+                    <td class="rad9"></td>
+                </tr>
+                <tr>
+                    <td>2 par</td>
+                    <td class="rad10"></td>
+                    <td class="rad10"></td>
+                    <td class="rad10"></td>
+                </tr>
+                <tr>
+                    <td>tre like</td>
+                    <td class="rad11"></td>
+                    <td class="rad11"></td>
+                    <td class="rad11"></td>
+                </tr>
+                <tr>
+                    <td>fire like</td>
+                    <td class="rad12"></td>
+                    <td class="rad12"></td>
+                    <td class="rad12"></td>
+                </tr>
+                <tr>
+                    <td>Liten straight</td>
+                    <td class="rad13"></td>
+                    <td class="rad13"></td>
+                    <td class="rad13"></td>
+                </tr>
+                <tr>
+                    <td>Stor straight</td>
+                    <td class="rad14"></td>
+                    <td class="rad14"></td>
+                    <td class="rad14"></td>
+                </tr>
+                <tr>
+                    <td>Hus</td>
+                    <td class="rad15"></td>
+                    <td class="rad15"></td>
+                    <td class="rad15"></td>
+                </tr>
+                <tr>
+                    <td>Sjanse</td>
+                    <td class="rad16"></td>
+                    <td class="rad16"></td>
+                    <td class="rad16"></td>
+                </tr>
+                <tr>
+                    <td>YATZY</td>
+                    <td class="rad17"></td>
+                    <td class="rad17"></td>
+                    <td class="rad17"></td>
+                </tr>
+                <tr>
+                    <td class="farge-rad">Total sum</td>
+                    <td class="rad18"></td>
+                    <td class="rad18"></td>
+                    <td class="rad19"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        //Bringer inn forskjellige id-er
+        document.getElementById("terning1");
+        document.getElementById("terning2");
+        document.getElementById("terning3");
+        document.getElementById("terning4");
+        document.getElementById("terning5");
+        document.getElementById("resetKnapp");
+        document.getElementById("nullKast");
+        document.getElementById("kastKnapp");
+        // Konstanter som ikke skal endres og som definerer alle radene fra 1-18. 
+        var radene = new Array(
+            document.getElementsByClassName("deltagere"),
+            document.getElementsByClassName("rad1"),
+            document.getElementsByClassName("rad2"),
+            document.getElementsByClassName("rad3"),
+            document.getElementsByClassName("rad4"),
+            document.getElementsByClassName("rad5"),
+            document.getElementsByClassName("rad6"),
+            document.getElementsByClassName("rad7"),
+            document.getElementsByClassName("rad8"),
+            document.getElementsByClassName("rad9"),
+            document.getElementsByClassName("rad10"),
+            document.getElementsByClassName("rad11"),
+            document.getElementsByClassName("rad12"),
+            document.getElementsByClassName("rad13"),
+            document.getElementsByClassName("rad14"),
+            document.getElementsByClassName("rad15"),
+            document.getElementsByClassName("rad16"),
+            document.getElementsByClassName("rad17"),
+            document.getElementsByClassName("rad18")
+        );
+
+        //lager en array some inneholder bildenene jeg skal brukex4
+        var bilderAvTerning = new Array(
+            "./dice1.png",
+            "./dice2.png",
+            "./dice3.png",
+            "./dice4.png",
+            "./dice5.png",
+            "./dice6.png"
+        );
+
+        // Legger til spiller når du klikker på en knapp der klassen deltager er blit nevnt
+        function Spillere() {
+            for (let i = 0; i < 3; i++) {
+                document.getElementsByClassName("deltagere")[i].innerHTML = prompt("Navn på spiller");
+            }
+        }
+
+        function terningResultat() {
+            return Math.floor(Math.random() * bilderAvTerning.length);
+        }
+
+        // En funksjon som gjør at når jeg klikker på en knapp så kastes 5 terninger med 
+        //tilfeldig nummer fra 1-6 hvis terningene ikke er grønn. Hvis de er grønn skal 
+        //terningene ikke kastes
+        var counter = 0;
+        function kast() {
+            counter++;
+            if (counter < 4) {
+                if (terning1.style.backgroundColor != "green") {
+                    terning1.src = bilderAvTerning[terningResultat()];
+                }
+                if (terning2.style.backgroundColor != "green") {
+                    terning2.src = bilderAvTerning[terningResultat()];
+                }
+                if (terning3.style.backgroundColor != "green") {
+                    terning3.src = bilderAvTerning[terningResultat()];
+                }
+                if (terning4.style.backgroundColor != "green") {
+                    terning4.src = bilderAvTerning[terningResultat()];
+                }
+                if (terning5.style.backgroundColor != "green") {
+                    terning5.src = bilderAvTerning[terningResultat()];
+                }
+            }
+            else {
+                hvisResetKnapp();
+            }
+        }
+
+        //Lager en variabel som sier om fargen er grønn eller ikke
+        //Deretter lager jeg en funksjon hvor jeg bruker parimeter slik at jeg ikke 
+        //må lage en funksjon til vær terning som sjekker om den er grønn eller ikke
+        var erGronn = false;
+        function checkColor(terning) {
+            if (erGronn == false) {
+                terningene[terning - 1].style.backgroundColor = "green";
+                erGronn = true;
+            }
+            else {
+                terningene[terning - 1].style.backgroundColor = "";
+                erGronn = false;
+            }
+        }
+
+        var terningene = document.getElementsByClassName("terningene");
+        //Gjør at alle terningene får hvit bakgrunn
+        for (let i = 0; i < terningene.length; i++) {
+            terningene[i].style.backgroundColor = "";
+        }
+
+        //Lager en funksjon som gjemmer knapp når counter er større enn 0 men viser den når counter er 0, den gjør også 
+        //at kast knappen ikke funker etter 3 kast og man må bytte spiller
+        var spiller = 0;
+        function resetKast() {
+            for (let i = 0; i < terningene.length; i++) {
+                terningene[i].style.backgroundColor = "";
+            }
+            counter = 0
+            resetKnapp.style.display = "none";
+            nullKast.style.color = "transparent";
+            kastKnapp.disabled = false;
+            for (let i = 0; i < 3; i++) {
+                spiller = deltagere[i];
+            }
+        }
+
+        function hvisResetKnapp() {
+            resetKnapp.style.display = "";
+            nullKast.style.color = "black";
+            kastKnapp.disabled = true;
+        }
+
+        function lagerSvarTop(rad, deltagere) {
+            var verdiTerning = new Array(
+                terning1.innerHTML,
+                terning2.innerHTML,
+                terning3.innerHTML,
+                terning4.innerHTML,
+                terning5.innerHTML,
+            );
+            function sjekk(verdier, nummer) {
+                return verdier.filter((v) => (v == nummer)).length;
+            }
+            let antallTerning = sjekk(verdiTerning, rad);
+            radene[rad][deltagere - 1].innerHTML = antallTerning * rad;
+        }
+
+
+    </script>
+</body>
+
+</html>
