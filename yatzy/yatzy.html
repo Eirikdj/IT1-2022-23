@@ -219,7 +219,7 @@
         document.getElementById("nullKast");
         document.getElementById("kastKnapp");
         // Konstanter som ikke skal endres og som definerer alle radene fra 1-18. 
-        var radene = new Array(
+        const radene = [
             document.getElementsByClassName("deltagere"),
             document.getElementsByClassName("rad1"),
             document.getElementsByClassName("rad2"),
@@ -239,17 +239,17 @@
             document.getElementsByClassName("rad16"),
             document.getElementsByClassName("rad17"),
             document.getElementsByClassName("rad18")
-        );
+        ];
 
         //lager en array some inneholder bildenene jeg skal brukex4
-        var bilderAvTerning = new Array(
+        const bilderAvTerning = [
             "./dice1.png",
             "./dice2.png",
             "./dice3.png",
             "./dice4.png",
             "./dice5.png",
             "./dice6.png"
-        );
+        ];
 
         // Legger til spiller når du klikker på en knapp der klassen deltager er blit nevnt
         function Spillere() {
