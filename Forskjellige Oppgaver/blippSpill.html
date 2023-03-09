@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blipp Spill</title>
+</head>
+<style>
+    div {
+        position: absolute;
+        background-color: lightslategrey;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+    }
+
+    #poengElement {
+        font-size: 35px;
+        display: flex;
+        justify-content: center;
+    }
+
+    #fargeValg {
+        display: flex;
+    }
+</style>
+
+<body>
+    <audio src="./Blipp.wav" id="lyd"></audio>
+    <input type="color" id="fargeValg">
+    <p id="poengElement">Poeng</p>
+</body>
+<script>
+    var fargeValg = document.getElementById("fargeValg");
+    var ny = true;
+    var lyd = document.getElementById("lyd");
+    var poengElement = document.getElementById("poengElement");
+    var poeng = 0;
+
+    window.onclick = function (event) {
+        ny = true;
+        var mittElement = document.createElement("div");
+        mittElement.style.top = event.clientY - 25 + "px";
+        mittElement.style.left = event.clientX - 25 + "px";
+        mittElement.style.backgroundColor = fargeValg.value;
+        mittElement.onmouseenter = fjern;
+        document.body.appendChild(mittElement);
+    }
+    var fjern = function (evt) {
+        evt.stopPropagation();
+        if (!ny) {
+            poeng = poeng + 1;
+            poengElement.innerHTML = poeng;
+            var minAnim = evt.target.animate([{ transform: "scale(1)" }, { transform: "scale(2)" }], 50);
+            minAnim.onfinish = function () {
+                document.body.removeChild(evt.target);
+                lyd.play();
+            }
+        }
+        ny = false;
+    }
+
+    fargeValg.onclick = function (evt) {
+        evt.stopPropagation();
+    }
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spørsmål</title>
+</head>
+
+<body>
+    <audio id="LydForRiktig" src="vaderRight.mp3"></audio>
+    <audio id="lydForFeil" src="trumpWrong.mp3"></audio>
+    <h1 id="sporsmaal">Her er spørsmålet</h1>
+    <input type="checkbox" id="alt1" name="checkbox" onclick="bareSjekkEn(this.id)"><span id="alt1Txt"></span>
+    <input type="checkbox" id="alt2" name="checkbox" onclick="bareSjekkEn(this.id)"><span id="alt2Txt"></span>
+    <input type="checkbox" id="alt3" name="checkbox" onclick="bareSjekkEn(this.id)"><span id="alt3Txt"></span>
+    <input type="text" id="inpNyttSpm" placeholder="Spørsmål">
+    <input type="text" id="inpSvar" placeholder="svar">
+    <button id="btnAdmin" hidden="true">Bli Admin</button>
+    <button id="btnBruker">Bli bruker</button>
+    <br>
+    <br>
+    <br>
+    <button id="btnCheck">Sjekk svar</button>
+    <button id="btnForrige">Forrige</button>
+    <button id="btnNeste">Neste</button>
+    <br><img id="imgBilde" src="" style="height: 300px;">
+
+    <script>
+        var sporsmaal = document.getElementById("sporsmaal");
+        var btnCheck = document.getElementById("btnCheck");
+        var btnNeste = document.getElementById("btnNeste");
+        var btnForrige = document.getElementById("btnForrige");
+        var imgBilde = document.getElementById("imgBilde");
+        var inpNyttSpm = document.getElementById("inpNyttSpm");
+        var inpSvar = document.getElementById("inpSvar");
+        var btnAdmin = document.getElementById("btnAdmin");
+        var btnBruker = document.getElementById("btnBruker");
+
+        let lydForRiktig = document.getElementById("lydForRiktig");
+        let lydForFeil = document.getElementById("lydForFeil");
+        let checkbox = document.getElementsByName("checkbox");
+
+        inpNyttSpm.hidden = true;
+        inpSvar.hidden = true;
+        btnBruker.hidden = true;
+        btnForrige.disabled = true;
+
+        var spmNr = 0;
+        var spmOgSvar = [
+            { q: "Hvem er dette?", a1: "Snoop dogg", a2: "Donald Trump", aRiktig: "Elon Musk", bilde: "https://ichef.bbci.co.uk/news/976/cpsprodpb/7727/production/_103330503_musk3.jpg" },
+            { q: "Hvor gammel er Ask?", aRiktig: "17", a1: "96", a2: "12", bilde: "https://www.pngitem.com/pimgs/m/3-37694_ages-silhouette-clip-arts-birth-to-death-png.png" },
+            { q: "Hvor bor Ask?", a1: "Billingstad", aRiktig: "Hvalstad", a2: "I en Mansion", bilde: "https://i.ytimg.com/vi/P1aY_h9jEqo/maxresdefault.jpg" }
+        ];
+
+        function alternativene() {
+            const sporsmalene = [spmOgSvar[spmNr].aRiktig, spmOgSvar[spmNr].a1, spmOgSvar[spmNr].a2]
+            document.getElementById("alt1").value = sporsmalene[0];
+            document.getElementById("alt2").value = sporsmalene[1];
+            document.getElementById("alt3").value = sporsmalene[2];
+            document.getElementById("alt1Txt").innerHTML = sporsmalene[0];
+            document.getElementById("alt2Txt").innerHTML = sporsmalene[1];
+            document.getElementById("alt3Txt").innerHTML = sporsmalene[2];
+        }
+
+
+        function settOppSkjermbilde() {
+            sporsmaal.innerHTML = spmOgSvar[spmNr].q;
+            imgBilde.src = spmOgSvar[spmNr].bilde;
+            alternativene();
+        }
+        settOppSkjermbilde();
+
+        score = 0;
+        function sjekkSvar() {
+            if (alt1.checked == true && alt1.value == spmOgSvar[spmNr].aRiktig) {
+                alert("Riktig svar");
+                lydForRiktig.play();
+            }
+            if (alt2.checked == true && alt2.value == spmOgSvar[spmNr].aRiktig) {
+                alert("Riktig svar");
+                lydForRiktig.play();
+            }
+            if (alt3.checked == true && alt3.value == spmOgSvar[spmNr].aRiktig) {
+                alert("Riktig svar");
+                lydForRiktig.play();
+            }
+            else {
+                alert("Feil svar");
+                lydForFeil.play();
+            }
+        };
+        btnCheck.addEventListener("click", sjekkSvar);
+
+        function nesteSpm() {
+            btnForrige.disabled = false;
+            if (spmNr < spmOgSvar.length - 1) {
+                spmNr++;
+                settOppSkjermbilde();
+                unCheckAlle();
+            }
+            if (spmNr == spmOgSvar.length - 1) {
+                btnNeste.disabled = true;
+            }
+        }
+        btnNeste.addEventListener("click", nesteSpm);
+
+        function forrigeSpm() {
+            btnNeste.disabled = false;
+            btnForrige.value = "";
+            if (spmNr > 0) {
+                spmNr--;
+                settOppSkjermbilde();
+                unCheckAlle(); 
+            }
+            if (spmNr == spmOgSvar.length - 1) {
+                btnNeste.disabled = true;
+            }
+            if (spmNr == 0) {
+                btnForrige.disabled = true;
+            }
+        }
+        btnForrige.addEventListener("click", forrigeSpm);
+
+        function bareSjekkEn(id) {
+            for (var i = 1; i <= 3; i++) {
+                {
+                    document.getElementById("alt" + i).checked = false;
+                }
+                document.getElementById(id).checked = true;
+            }
+        }
+        function unCheckAlle(id) {
+            for (var i = 1; i <= 3; i++) {
+                {
+                    document.getElementById("alt" + i).checked = false;
+                }
+            }
+        }
+
+        function adminFunksjoner() {
+            inpNyttSpm.hidden = false;
+            inpSvar.hidden = false;
+            sporsmaal.innerHTML = "Skriv inn nytt spørsmål i første inputfelt, riktig svar i andre"
+            alt1Txt.hidden = true;
+            alt2Txt.hidden = true;
+            alt3Txt.hidden = true;
+            imgBilde.src = "";
+            imgBilde.alt = "";
+            alt1.hidden = true;
+            alt2.hidden = true;
+            alt3.hidden = true;
+            btnAdmin.hidden = true;
+            btnBruker.hidden = false;
+            btnForrige.hidden = true;
+            btnNeste.hidden = true;
+            btnCheck.removeEventListener("click", sjekkSvar);
+            btnCheck.addEventListener("click", nyttSpm)
+            btnCheck.innerHTML = "Legg inn Spørsmålet"
+        }
+        btnAdmin.addEventListener("click", adminFunksjoner);
+
+        function brukerFunksjoner() {
+            alt1Txt.hidden = false;
+            alt2Txt.hidden = false;
+            alt3Txt.hidden = false;
+            alt1.hidden = false;
+            alt2.hidden = false;
+            alt3.hidden = false;
+            inpNyttSpm.hidden = true;
+            inpSvar.hidden = true;
+            imgBilde.src = spmOgSvar[spmNr].bilde;
+            sporsmaal.innerHTML = spmOgSvar[spmNr].q;
+            btnForrige.hidden = false;
+            btnNeste.hidden = false;
+            btnBruker.hidden = true;
+            btnAdmin.hidden = false;
+            btnCheck.removeEventListener("click", nyttSpm);
+            btnCheck.addEventListener("click", sjekkSvar);
+            btnCheck.innerHTML = "Sjekk Svar";
+        }
+        btnBruker.addEventListener("click", brukerFunksjoner);
+
+        function nyttSpm() {
+            var nyttSpm = { q: inpNyttSpm.value, a: inpSvar.value, a1: "", a2: "", a3: "", bilde: "" };
+            alert("Forresten, nå er det " + spmOgSvar.length + " spørsmål i arrayen");
+        }
+
+        function knappTrykket(evt) {
+            var tallKode = evt.keyCode;
+            if (tallKode == 69 && btnAdmin.hidden == true) //Du har trykket E
+            {
+                btnAdmin.hidden = false;
+            }
+            else {
+                btnAdmin.hidden = true;
+            }
+        }
+        document.addEventListener("keydown", knappTrykket);
+
+    </script>
+</body>
+
+</html>
