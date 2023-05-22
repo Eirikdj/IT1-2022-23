@@ -9,23 +9,46 @@
     <link rel="stylesheet" href="hovedstilark_github.css">
 </head>
 
-<body>
-    <div id="info">
-        <h1 id="tittel">Hei, <br><span class="tittel-farge">Dette er min github side for</span><br>2022-2023</h1>
-        <a href="#arbeid" id="mittArbeid">Mitt arbeid</a>
+<body>  
+    <div class="oppsett flex">
+        <div id="info">
+            <img id="profil-bilde" src="./players.jpg" alt="Pofil bilde">
+            <h2>Hei,</h2>
+            <h1><span>Dette er min<br>github side</span></h1>
+            <h2>2022-2023</h2>
+            <p>Her ligger alle oppgavene jeg har jobbet med i løpet av året</p>
+            <a class="link" href="#prosjekter">Mitt arbeid</a>
+        </div>
     </div>
+    <div class="oppsett grid">
+        <div id="prosjekter">
+            <h2 id="arbeid-tittel">Mitt Arbeid</h2>
+            <!-- Prosjekt 1 -->
+            <h3 class="prosjekt-tittel">Periode Systemet</h3>
+            <p>Denne oppgaven handlet om å lage et periode system</p>
+            <a class="link" href="periode_systemet.html">Klikk her</a>
+        
+            <!-- Prosjekt 2 -->
+            <h3 class="prosjekt-tittel">Nettside om Fjell</h3>
+            <p>Prosjektet handlet om å lage en nettside, hvor man lage noe om hva man ville</p>
+            <a class="link" href="prosjekt/Forside.html" target="_blank">Klikk her</a>
+        
+            <!-- Prosjekt 3 -->
+            <h3 class="prosjekt-tittel">Små oppgaver</h3>
+            <p>Denne opggaven ble gjort i timen, hvor vi løste små ulike oppgaver</p>
+            <a class="link" href="Oppgaver/andreOppgaver.html" target="_blank">Klikk her</a>
+            <!-- Prosjekt 4 -->
+            <h3 class="prosjekt-tittel">Yatzy Oppgave</h3>
+            <p>Denne opggaven ble gjort i timen, hvor vi løste små ulike oppgaver</p>
+            <a class="link" href="yatzy/yatzy.html" target="_blank">Klikk her</a>
+            
+            <!-- Prosjekt 5 -->
+            <h3 class="prosjekt-tittel">Visittkort-maskin</h3>
+            <p>Denne opggaven ble gjort i timen, hvor vi løste små ulike oppgaver</p>
+            <a class="link" href="russeKort.html" target="_blank">Klikk her</a>
 
-    <div id="arbeid">
-        <h2 class="tittel-farge"></h2>
-
-        <div id="arbeid-oppsett">
-            <a class="link" href="periode_systemet.html" target="_blank">Periode systemet</a>
-            <a class="link" href="prosjekt/Forside.html" target="_blank">Prosjekt nettside</a>
-            <a class="link" href="Oppgaver/andreOppgaver.html" target="_blank">Små oppgaver</a>
-            <a class="link" href="yatzy/yatzy.html" target="_blank">Yatzy</a>
-            <a class="link" href="russeKort.html" target="_blank">Visittkort-maskin</a>
+            <a class="link" id="link-top" href="#top">Til toppen</a>
         </div>
     </div>
 </body>
-
 </html>
