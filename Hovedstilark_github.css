@@ -1,78 +1,104 @@
-        body {
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        }
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
 
-        .tittel-farge {
-            color: #4070f4;
-        }
+*{
+    margin: 0;
+    padding: 0;
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
-        #arbeid-oppsett{
-            display: grid;
-            grid-template-columns: 100%;
-            grid-column-gap: 2rem;
-        }
-        .link {
-            font-size: 25px;
-            border: 2px solid black;
-            text-transform: uppercase;
-            padding: 10px 20px;
-            text-decoration: none;
-            cursor: pointer;
-            transition: color 0.5s linear;
-            position: relative;
-            color: #4070f4;
-        }
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #070a13;
+}
 
-        .link:hover {
-            color: black;
-        }
+.oppsett {
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    margin: 0;
+}
 
-        .link::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #4070f4;
-            color: black;
-            z-index: -1;
-            transition: transform 0.5s;
-            transform-origin: 0 0;
-            transition-timing-function: cubic-bezier(0.5., 1.6, 0.4, 0.7);
-            transform: scaleX(0);
-        }
+.flex{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
 
-        .link:hover::before {
-            transform: scaleX(1);
-        }
+.grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 50rem;
+}
+
+#info > h1 {
+    color: #4070f4;
+    font-size: 70px;
+    text-transform: uppercase;
+}
+#info > h2 {
+    color: #A9A9A9;
+    font-size: 40px;
+}
+
+#info > p{
+    color: #A9A9A9;
+    font-size: 20px;
+    padding: 25px 0px;
+}
+
+#profil-bilde{
+    border: 3px solid #4070f4;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 100px 15px;
+}
 
 
-                body {
-                    background-color: black;
-                    width: 100%;
-                    min-height: 100vh;
-                    background-image: url(bakgrunn_nettside.gif);
-                    background-repeat: no-repeat;
-                    background-size: 70%;
-                    background-position: center;
-                    margin: 0;
-                }
-        
-                h1 {
-                    display: flex;
-                    justify-content: center;
-                    font-size: 100px;
-                    font-family: 'Courier New', Courier, monospace;
-                    color: transparent;
-                    -webkit-text-stroke: 1px #fff;
-                    background: url(back.png);
-                    -webkit-background-clip: text;
-                    background-position: 0 0;
-                    animation: tittel 20s linear infinite;
-        
-                }
-        
+#prosjekter > p{
+    color: #A9A9A9;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+.prosjekt-tittel{
+    font-size: 30px;
+    margin-bottom: 15px;
+    color: white;
+    margin-top: 125px;
+}
+
+#arbeid-tittel{
+    font-size: 70px;
+    color: #4070f4;
+}
+
+.link{
+    padding: 15px 15px;
+    border:2px solid; 
+    border-radius: 50px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    text-decoration: none; 
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+}
+
+#link-top{
+    float: left;
+}
+
+.link:hover {
+    background-color: #23c483;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+}
+html{
+    scroll-behavior: smooth;
+}
