@@ -47,14 +47,6 @@ body {
     padding: 25px 0px;
 }
 
-#profil-bilde{
-    border: 3px solid #4070f4;
-    width: 80%;
-    max-width: 500px;
-    border-radius: 100px 15px;
-}
-
-
 #prosjekter > p{
     color: #A9A9A9;
     font-size: 15px;
