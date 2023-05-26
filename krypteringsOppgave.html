@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krypteringsprogram</title>
+    <style>
+        #oppsett {
+            display: grid;
+            place-items: center;
+        }
+        button{
+            width: 100px;
+        }
+        input{
+            width: 220px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="oppsett">
+        <h2>Krypteringsprogram</h2>
+        <label for="tekst">Tekst:</label>
+        <input type="text" id="tekst" placeholder="Skriv inn teksten du vil kryptere" />
+        <br /><br />
+        <label for="nokkel">Nøkkel:</label>
+        <input type="number" id="nokkel" placeholder="Skriv inn et tall fra 1-10" />
+        <br /><br />
+        <label for="lengde">Lengde:</label>
+        <input type="number" id="lengde" placeholder="Skriv inn lengde på krypteringen" />
+        <br /><br />
+        <button onclick="krypterTekst()">Krypter</button>
+        <br>
+        <button onclick="dekrypterTekst()">Dekrypter</button>
+        <br /><br />
+        <label for="resultat">Resultat:</label>
+        <textarea id="resultat" rows="4" cols="30" readonly></textarea>
+    </div>
+
+    <script>
+        function krypterTekst() {
+            var tekst = document.getElementById("tekst").value;
+            var nokkel = parseInt(document.getElementById("nokkel").value);
+            var lengde = parseInt(document.getElementById("lengde").value);
+
+            var kryptertTekst = krypter(tekst, nokkel, lengde);
+            document.getElementById("resultat").value = kryptertTekst;
+        }
+
+        function dekrypterTekst() {
+            var tekst = document.getElementById("tekst").value;
+            var nokkel = parseInt(document.getElementById("nokkel").value);
+            var lengde = parseInt(document.getElementById("lengde").value);
+
+            var dekryptertTekst = krypter(tekst, -nokkel, lengde);
+            document.getElementById("resultat").value = dekryptertTekst;
+        }
+
+        function krypter(tekst, nokkel, lengde) {
+            var kryptertTekst = "";
+            for (var i = 0; i < tekst.length; i++) {
+                var bokstav = tekst[i];
+                if (bokstav.match(/[a-z]/i)) {
+                    var start = bokstav.match(/[A-Z]/) ? 65 : 97;
+                    var kryptertBokstav = String.fromCharCode((bokstav.charCodeAt() - start + nokkel) % 26 + start);
+                    kryptertTekst += kryptertBokstav;
+                } else {
+                    kryptertTekst += bokstav;
+                }
+                if (lengde > 0 && i === lengde - 1) {
+                    break;
+                }
+            }
+            return kryptertTekst;
+        }
+    </script>
+</body>
+
+</html>
